@@ -2,10 +2,10 @@
 
 # April 11, 2016 v0.01
 
-RUN apt-get update
-RUN apt-get install -y wget unzip git nano task-spooler
+apt-get update
+apt-get install -y wget unzip git nano task-spooler
 
-RUN mkdir /root/software
+mkdir /root/software
 
 # ADMIXTURE
 	cd /root/software; \
