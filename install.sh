@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
-# April 24, 2016 v0.01d (for Ubuntu)
+# June 27, 2016 v0.02 (for ubuntu:xenial)
 
-SOFTWARE='/lhmg/software'
-DATA='/lhmg/data'
+SOFTWARE='~/software'
 
 apt-get update
 apt-get install -y wget unzip git nano task-spooler
 
 mkdir -p ${SOFTWARE}
-mkdir -p ${DATA}
 
 # ADMIXTURE
 	cd ${SOFTWARE}; \
@@ -22,12 +20,12 @@ mkdir -p ${DATA}
 	cd ${SOFTWARE}; \
 	mkdir plink; \
 	cd plink; \
-	wget https://www.cog-genomics.org/static/bin/plink160416/plink_linux_x86_64.zip; \
+	wget https://www.cog-genomics.org/static/bin/plink160607/plink_linux_x86_64.zip; \
 	unzip plink_linux_x86_64.zip; \
 	ln -s ${SOFTWARE}/plink/plink /usr/local/bin
 
 # EIGENSOFT
-	apt-get install -y libgsl0ldbl libgfortran3; \
+	apt-get install -y libgsl0-dev libgfortran3; \
 	cd ${SOFTWARE}; \
 	git clone https://github.com/DReichLab/EIG.git; \
 	ln -s ${SOFTWARE}/EIG/bin/convertf /usr/local/bin; \
@@ -49,7 +47,7 @@ mkdir -p ${DATA}
 	ln -s ${SOFTWARE}/bwa/bwa  /usr/local/bin
 
 # Node.js
-	NODE_VERSION='v5.11.0'
+	NODE_VERSION='v6.2.2'
 	cd ${SOFTWARE}; \
 	wget https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.xz; \
 	apt-get install xz-utils; \
@@ -59,7 +57,7 @@ mkdir -p ${DATA}
 	ln -s ${SOFTWARE}/node-${NODE_VERSION}-linux-x64/bin/npm  /usr/local/bin
 
 # REDIS
-    REDIS='redis-3.0.7'
+    REDIS='redis-3.2.1'
     apt-get install -y make gcc; \
     cd ${SOFTWARE}; \
     wget http://download.redis.io/releases/${REDIS}.tar.gz; \
@@ -70,9 +68,3 @@ mkdir -p ${DATA}
     cd ..; \
     make; \
     make install
-
-# Dataset from Lazaridis et al., 2014
-    cd ${DATA}; \
-    wget http://genetics.med.harvard.edu/reich/Reich_Lab/Datasets_files/EuropeFullyPublic.tar.gz; \
-    tar -xzf EuropeFullyPublic.tar.gz; \
-    rm EuropeFullyPublic.tar.gz
