@@ -2,7 +2,7 @@
 
 # June 27, 2016 v0.02 (for ubuntu:xenial)
 
-SOFTWARE='~/software'
+SOFTWARE='/home'
 
 apt-get update
 apt-get install -y wget unzip git nano task-spooler
