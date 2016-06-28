@@ -5,7 +5,7 @@
 SOFTWARE='/home'
 
 apt-get update
-apt-get install -y wget unzip git nano task-spooler
+apt-get install -y wget unzip git nano task-spooler make gcc
 
 mkdir -p ${SOFTWARE}
 
@@ -39,11 +39,11 @@ rm gsl-1.6.tar.gz; \
 cd gsl-1.6; \
 ./configure; \
 make; \
-sudo make install; \
+make install; \
 echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib' >> ~/.bashrc; \
 echo 'export CFLAGS="-I/usr/local/include"' >> ~/.bashrc; \
 echo 'export LDFLAGS="-L/usr/local/lib"' >> ~/.bashrc; \
-source ~/.bashrc
+. ~/.bashrc
 
 # ALDER
 apt-get install -y libfftw3-3 libfftw3-double3 libfftw3-long3 libfftw3-single3 liblapack3 libblas3; \
@@ -72,7 +72,6 @@ ln -s ${SOFTWARE}/node-${NODE_VERSION}-linux-x64/bin/npm  /usr/local/bin
 
 # REDIS
 REDIS='redis-3.2.1'
-apt-get install -y make gcc; \
 cd ${SOFTWARE}; \
 wget http://download.redis.io/releases/${REDIS}.tar.gz; \
 tar -xzf ${REDIS}.tar.gz; \
