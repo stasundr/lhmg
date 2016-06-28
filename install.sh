@@ -25,14 +25,25 @@ unzip plink_linux_x86_64.zip; \
 ln -s ${SOFTWARE}/plink/plink /usr/local/bin
 
 # EIGENSOFT
-apt-get install -y libgsl0-dev libgfortran3; \
+apt-get install -y libgsl0-dev libgfortran3 libopenblas-dev; \
 cd ${SOFTWARE}; \
 # git clone https://github.com/DReichLab/EIG.git; \
 wget https://data.broadinstitute.org/alkesgroup/EIGENSOFT/EIG6.1.1.tar.gz; \
 tar -xzf EIG6.1.1.tar.gz; \
 rm EIG6.1.1.tar.gz; \
 ln -s ${SOFTWARE}/EIG6.1.1/bin/convertf /usr/local/bin; \
-ln -s ${SOFTWARE}/EIG6.1.1/bin/smartpca /usr/local/bin
+ln -s ${SOFTWARE}/EIG6.1.1/bin/smartpca /usr/local/bin; \
+wget http://gnu.mirror.vexxhost.com/gsl/gsl-1.6.tar.gz; \
+tar -zxvf gsl-1.6.tar.gz; \
+rm gsl-1.6.tar.gz; \
+cd gsl-1.6; \
+./configure; \
+make; \
+sudo make install; \
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib' >> ~/.bashrc; \
+echo 'export CFLAGS="-I/usr/local/include"' >> ~/.bashrc; \
+echo 'export LDFLAGS="-L/usr/local/lib"' >> ~/.bashrc; \
+source ~/.bashrc
 
 # ALDER
 apt-get install -y libfftw3-3 libfftw3-double3 libfftw3-long3 libfftw3-single3 liblapack3 libblas3; \
