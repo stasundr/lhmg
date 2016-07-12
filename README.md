@@ -11,6 +11,12 @@
 7. [Redis](http://redis.io)
 
 ## Docker
+Чтобы подготовить контейнер:
 ```
 docker build -t lhmg .
+```
+
+Чтобы запустить контейнер:
+```
+docker run -v /localPathToYourData:/pathInContainerToYourData -it lhmg 
 ```

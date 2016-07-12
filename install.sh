@@ -20,7 +20,7 @@ ln -s ${SOFTWARE}/admixture_linux-1.3.0/admixture /usr/local/bin
 cd ${SOFTWARE}; \
 mkdir plink; \
 cd plink; \
-wget https://www.cog-genomics.org/static/bin/plink160607/plink_linux_x86_64.zip; \
+wget https://www.cog-genomics.org/static/bin/plink160705/plink_linux_x86_64.zip; \
 unzip plink_linux_x86_64.zip; \
 ln -s ${SOFTWARE}/plink/plink /usr/local/bin
 
